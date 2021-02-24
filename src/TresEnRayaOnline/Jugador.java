@@ -256,13 +256,15 @@ public class Jugador extends JComponent {
 
 						lblNewLabel.setText("" + turno);
 						lblNewLabel.setBackground(Color.DARK_GRAY);
+						/*
+						Comprobamos si ganador es distinto de 0 
+						*/
 						if (ganador != 0 || hayJuego == false) {
 							JOptionPane.showMessageDialog(null, "GANADOR J " + ganador);
 							// lblGanador.setText("GANADOR J"+ganador);
 							lblGanador.setFont(new Font("Mistral", Font.ITALIC, 35));
 							lblHasSeleccionado.setText("");
-							// playSound();
-							// music.prepare();
+							
 							hayJuego = false;
 						}
 
