@@ -96,7 +96,10 @@ public class Jugador extends JComponent {
 	el JFrame creado, con el gradiante y los distintos botones.
 	*/
 	private void initialize() {
-
+		/*
+		Damos un titulo al Jframe y sus dimensiones. Despues llamamos a la clase Gradiante para que se aplique el color en ella.
+		Hacemos visible ese gradiante y creamos el boton iniciar que detecta ademas nuestro modo de juego.
+		*/
 		frame = new JFrame("Tres en raya");
 		frame.setBounds(100, 100, 524, 432);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -165,7 +168,7 @@ public class Jugador extends JComponent {
 //					EsperaTablero(this)
 					// EsperaTablero espera =new EsperaTablero(turno,jugador, sc,botones)
 					// pedir plantilla al servidor Tresenraya.plantillaPrincipal(plantilla);
-					// inicializar botones
+					// inicializar botones y ponermos los colores a los botones
 					btnNewButton.setText("");
 					btnNewButton.setBackground(Color.GREEN);
 					button.setText("");
@@ -204,6 +207,9 @@ public class Jugador extends JComponent {
 
 			}
 		});
+		/*
+		Boton que tras acabar partida limpia el tablero y ejecuta una nueva ventana.
+		*/
 		btnIniciar.setBounds(367, 226, 89, 23);
 		frame.getContentPane().add(btnIniciar);
 		btnReset = new JButton("Reset");
@@ -220,6 +226,7 @@ public class Jugador extends JComponent {
 		btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//Comprobamos si hay juego con un boolean
 				if (hayJuego) {
 					turno = Integer.parseInt(lblNewLabel.getText());
 					if (turno == jugador && juegoIniciado) {
