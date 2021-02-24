@@ -111,7 +111,7 @@ public class EsperaTablero extends Thread{
 	public boolean isRealizado() {
 		return realizado;
 	}
-public void cambiarTextoAPlantilla(char[][] a) {
+public void cambiarTextoAPlantilla(char[][] a) { //actualiza la posicion
 	//plantillaTexto
 	int i=-1;
 	for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
@@ -126,7 +126,7 @@ public void cambiarTextoAPlantilla(char[][] a) {
 	public void setRealizado(boolean realizado) {
 		this.realizado = realizado;
 	}
-	public static void mostrarPlantilla(char [][]a) {
+	public static void mostrarPlantilla(char [][]a) {// muestra los movimientos por consola
 		for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
 		{
 			for (int contadorColumnas=0;contadorColumnas<a[contadorFilas].length;contadorColumnas++) {
