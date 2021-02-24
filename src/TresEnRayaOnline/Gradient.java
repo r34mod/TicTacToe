@@ -8,7 +8,10 @@ import javax.swing.JComponent;
 
 public class Gradient extends JComponent{
 
-	
+	/*
+	Creamos atributos para las posiciones del gradiante, los colores
+	y la direccion que le daremos.
+	*/
 		
 	 public static int VERTICAL = 0;
 	    public static int HORIZONTAL = 1;
