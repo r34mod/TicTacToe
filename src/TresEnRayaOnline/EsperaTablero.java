@@ -42,7 +42,7 @@ public class EsperaTablero extends Thread{
     private Semaphore espera;
 	private static ObjectInputStream in ;
 	
-	
+	//constructor donde creamos todos los botones
 	public EsperaTablero(ObjectInputStream in ,Socket sc,char[][]plantilla,JButton btnNewButton,JButton b1,JButton b2,JButton b3,JButton b4,JButton b5,JButton b6,JButton b7,JButton b8,Semaphore espera, JLabel lblNewLabel,int turno) {
 		this.turno=turno;
 		this.lblNewLabel=lblNewLabel;
@@ -67,7 +67,7 @@ public class EsperaTablero extends Thread{
 		plantillaHilo11=new char[3][3];
 		plantillaTexto="";
 		try {
-			sc = new Socket(InetAddress.getLocalHost(), 2508);
+			sc = new Socket(InetAddress.getLocalHost(), 2508);//abrimos socket cogiendo la ip y ddandole el puerto 2508
 			istream=sc.getInputStream();
 			in=new ObjectInputStream(istream);
 		} catch (UnknownHostException e1) {
@@ -136,6 +136,7 @@ public void cambiarTextoAPlantilla(char[][] a) {
 		}
 		
 	}
+	//muestra todos los botones
 	public void refrescarTablero(char[][] a) {
 		btnNewButton.setText(""+a[0][0]);
 	      button.setText(""+a[0][1]);
