@@ -695,6 +695,9 @@ public class VentanaTresEnRaya {
 	
 	}
 	
+	/*
+	*	cambia el valor de los botones
+	*/
 	public void cambiarValoresBotones(String num){
 		int uno=Integer.parseInt(""+num.charAt(0));
 		int dos=Integer.parseInt(""+num.charAt(1));
