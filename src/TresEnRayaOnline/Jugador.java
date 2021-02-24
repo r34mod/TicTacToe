@@ -226,7 +226,8 @@ public class Jugador extends JComponent {
 		btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//Comprobamos si hay juego con un boolean
+				//Comprobamos si hay juego con un boolean y si no hay juego para ese jugador,
+				//le lanzamos una ventana indicando que no es us turno
 				if (hayJuego) {
 					turno = Integer.parseInt(lblNewLabel.getText());
 					if (turno == jugador && juegoIniciado) {
@@ -257,7 +258,8 @@ public class Jugador extends JComponent {
 						lblNewLabel.setText("" + turno);
 						lblNewLabel.setBackground(Color.DARK_GRAY);
 						/*
-						Comprobamos si ganador es distinto de 0 
+						Comprobamos si ganador es distinto de 0 y si hay turno de juego
+						Ademas, si hay ganador se indicara
 						*/
 						if (ganador != 0 || hayJuego == false) {
 							JOptionPane.showMessageDialog(null, "GANADOR J " + ganador);
@@ -721,6 +723,10 @@ public class Jugador extends JComponent {
 				}
 			}
 		});
+		
+		/*
+		Creamos los demas botones que habra en la ventana oara la seleccion del modo de juego. 
+		*/
 		button_7.setBounds(222, 196, 89, 61);
 		frame.getContentPane().add(button_7);
 
@@ -759,11 +765,11 @@ public class Jugador extends JComponent {
 		frame.getContentPane().add(lblGanador);
 
 	}
-
+	//Metodo para mirar el turno de los jugadores
 	public int mirarTurno() {
 		return turno;
 	}
-
+	//Actualizamos el tableros con los datos de cada boton vacios
 	public void refrescarTablero(char[][] a) {
 		btnNewButton.setText("" + a[0][0]);
 		button.setText("" + a[0][1]);
@@ -776,7 +782,7 @@ public class Jugador extends JComponent {
 		button_7.setText("" + a[2][2]);
 
 	}
-	
+	//Creamos el metodo para deshabilitar el frame y cerramos el socket para abrirlo de nuevo.
 	public void restartServer() {
 		frame.dispose();
 		esp = null;
