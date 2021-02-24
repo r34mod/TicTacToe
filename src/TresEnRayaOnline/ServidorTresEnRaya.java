@@ -44,7 +44,7 @@ public class ServidorTresEnRaya {
 			//una vez haceptada la conexion, mandar a los dos jugadores un mensaje de empezar
 		
 		
-		
+		//paco
 		    sc2=serverAddr.accept();
 		    
 			//inicalizar in y out jugador 1
