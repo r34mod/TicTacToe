@@ -3,7 +3,7 @@ package TresEnRayaOnline;
 public class Tresenraya {
 	
 	public static void plantillaPrincipal(char a[][]) {
-		
+		//pone todos los valores con *
 		for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
 		{
 			for (int contadorColumnas=0;contadorColumnas<a[contadorFilas].length;contadorColumnas++) {
