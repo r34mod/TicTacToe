@@ -11,14 +11,18 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class ServidorTresEnRaya {
+	//Creamos los Serversockets y los sockets para poder establecer la conexión
 	private static ServerSocket serverAddr = null;
 	private static ServerSocket serverAddr2 = null;
-	private static char[][] plantilla;
 	private static Socket sc= null;
 	private static Socket sc2= null;
 	private static Socket scO= null;
 	private static Socket scO2= null;
+	//Crea la plantilla que van a ver los jugadores
+	private static char[][] plantilla;
+	//Establece el turno de los jugadores
 	private static int turno=0;
+	//Crea los jugadores con la ficha de cada uno
 	private static final char J1='X';
 	private static final char J2='O';
 	private static String plantillaTexto;
@@ -37,6 +41,7 @@ public class ServidorTresEnRaya {
 	public static void main ( String [] args) {
 		plantilla= plantillaPrincipal(new char[3][3]);
 		try {
+			//Creamos la conexión
 			serverAddr = new ServerSocket(2505);
 			serverAddr2 = new ServerSocket(2508);
 			sc=serverAddr.accept();
@@ -44,7 +49,7 @@ public class ServidorTresEnRaya {
 			//una vez haceptada la conexion, mandar a los dos jugadores un mensaje de empezar
 		
 		
-		//paco
+		
 		    sc2=serverAddr.accept();
 		    
 			//inicalizar in y out jugador 1
@@ -82,10 +87,14 @@ public class ServidorTresEnRaya {
 					boolean casillasLibre=ControladorTres.hayCasillasLibres(plantilla);
 					//cambio la plantilla a texto
 					plantillaTexto=cambiarPlantillaTexto(plantilla);
+					//Escribe el caracter del jugador 1
 					outO.writeUTF(plantillaTexto);
 					outO2.writeUTF(plantillaTexto);
+					 //Escribe si es ganador o no
 					out.writeInt(ganador);
+					 //scribe el booleano de si la casilla está libre o no
 					out.writeBoolean(casillasLibre);
+					 //Ejecuta la orden de escritura con el metodo flush
 					out.flush();
 					outO.flush();
 					outO2.flush();
@@ -101,6 +110,7 @@ public class ServidorTresEnRaya {
 					}
 					
 				 }else {
+					 //leer desde jugador 2 y escribir el dato
 					int boton=in2.readInt();
 					int boton1=in2.readInt();
 					ControladorTres.jugar(plantilla, boton, boton1, J2);
@@ -109,14 +119,21 @@ public class ServidorTresEnRaya {
 					boolean casillasLibre=ControladorTres.hayCasillasLibres(plantilla);
 					//cambio la plantilla a texto
 					plantillaTexto=cambiarPlantillaTexto(plantilla);
+					 //Escribe el caracter del jugador 2
 					outO2.writeUTF(plantillaTexto);
 					outO.writeUTF(plantillaTexto);
+					 //Escribe si es ganador o no
 					out2.writeInt(ganador);
+					 //Escribe el booleano de si la casilla está libre o no
 					out2.writeBoolean(casillasLibre);
+					 //Ejecuta la orden de escritura con el metodo flush
 					out2.flush();
 					outO.flush();
 					outO2.flush();
 					
+					 //al metodo le pasas posicion de boton y J2
+					//devuelve boolean de ganado / perdido
+					 
 					if(ganador==1 || ganador==2) {
 						out.writeInt(ganador);
 						ServidorTresEnRaya.turno=2;
@@ -141,6 +158,7 @@ public class ServidorTresEnRaya {
 		
 		
 	}
+
 	public static String cambiarPlantillaTexto(char a[][]) {
 		String texto="";
 		for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
@@ -151,8 +169,12 @@ public class ServidorTresEnRaya {
 			}
 		}
 		
-	return texto;}
-public static char[][] plantillaPrincipal(char a[][]) {
+		return texto;
+	}
+	/*
+	*	Te pone las casillas de ambas pantallas con el caracter '*'
+	*/
+	public static char[][] plantillaPrincipal(char a[][]) {
 		
 		for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
 		{
@@ -163,17 +185,20 @@ public static char[][] plantillaPrincipal(char a[][]) {
 		}
 		
 	return a;}
-
-public static void mostrarPlantilla(char [][]a) {
-	for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
-	{
-		for (int contadorColumnas=0;contadorColumnas<a[contadorFilas].length;contadorColumnas++) {
+	/*
+	*	Te muestra por comando los valores de cada posición
+	*/
+	public static void mostrarPlantilla(char [][]a) {
+		for (int contadorFilas=0;contadorFilas<a.length;contadorFilas++)
+		{
+			for (int contadorColumnas=0;contadorColumnas<a[contadorFilas].length;contadorColumnas++) {
 		
-			System.out.println(a[contadorFilas][contadorColumnas]);
+				System.out.print(a[contadorFilas][contadorColumnas] + "		");
+			}
+			System.out.println("");
 		}
-	}
 	
-}
+	}
 	
 
 }
