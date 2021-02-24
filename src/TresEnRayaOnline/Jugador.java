@@ -91,7 +91,10 @@ public class Jugador extends JComponent {
 		initialize();
 	}
 
-
+	/*
+	El metodo initialize es el encargado de ejecutar y mostrar una ventana por cliente en la que veremos 
+	el JFrame creado, con el gradiante y los distintos botones.
+	*/
 	private void initialize() {
 
 		frame = new JFrame("Tres en raya");
