@@ -1,32 +1,36 @@
 package TresEnRayaOnline;
 
 public class ControladorTres {
-	
+	//Comprueba al empezar la partida que todas las casillas arranquen con *
 	public static boolean jugar(char a[][],int posicionF,int posicionC,char J) {
-		boolean fichaPuesta=true;
+		boolean fichaPuesta=true;//para comprobar que se ha puesto ficha
+		
 		if (a[posicionF][posicionC]=='*') {
-			a[posicionF][posicionC]=J;
+			a[posicionF][posicionC]=J;//Pone la posicion f-c a el valor de J
 			
 		}else {
-			fichaPuesta=false;
+			fichaPuesta=false;//cambiamos a false para decir que se ha puesto ficha
 			
 		}
 		
-	return fichaPuesta;}
+		return fichaPuesta;
+		}
 	
-	public static boolean hayCasillasLibres(char a[][]) {
+	//metodo el cual comprueba si hay casillas vacias
+	public static boolean hayCasillasLibres(char a[][]) { 
 		boolean hayHueco=false;
-		for (int contadorFilas=0;contadorFilas<a.length&&!hayHueco;contadorFilas++)
-		{
+		//recorremos longitud de a mientras sea menor que contador y hayhueco sea true
+		for (int contadorFilas=0;contadorFilas<a.length&&!hayHueco;contadorFilas++){
+			//recorremos longitud de tamaño de a[fila] "columna" y hayHueco true 
 			for (int contadorColumnas=0;contadorColumnas<a[contadorFilas].length&&!hayHueco;contadorColumnas++) {
-			
+				//si en el array con posicion fila columna es igual a *
 				if(a[contadorFilas][contadorColumnas]=='*') {
-					hayHueco=true;
+					hayHueco=true;//cambiamos el valor de hueco por true para marcar la casilla
 				}
 			}
 		}
-		
-	return hayHueco;}
+		return hayHueco;
+	}
 	
 	
 	
@@ -36,6 +40,7 @@ public class ControladorTres {
 		public static int mirarDiagonales(char a[][]) {
 			int JugadorGanador=0;
 			boolean ganador=false;
+			//comprobamos las diagonales para ver si hay ganador 
 			if (a[0][0]==a[1][1]&&a[0][0]==a[2][2]&&(a[0][0]=='O'||a[0][0]=='X')) {
 				ganador=true;
 							
@@ -59,14 +64,16 @@ public class ControladorTres {
 				
 			}
 			
-		return JugadorGanador;}
+		return JugadorGanador;
+		}
 		
 		//para mirar una vez terminado si hay algun ganador en Filas
 		public static int mirarFilas(char a[][]) {
 			int JugadorGanador=0;
 			//crear un switch
-			int filas=3;
+			int filas=3;//una variable para indicar la fila ganadora
 			boolean ganador=false;
+			//Comprueba las posiciones que sean iguales entonces ganador 
 			if (a[0][0]==a[0][1]&&a[0][0]==a[0][2]&&(a[0][0]=='O'||a[0][0]=='X')) {
 				ganador=true;
 				filas=0;		
@@ -83,6 +90,7 @@ public class ControladorTres {
 				}
 				
 			}
+			//un switch para decir que jugador ha ganado y en que fila
 			if (ganador) {
 				switch(filas) {
 				case 0:
@@ -112,7 +120,8 @@ public class ControladorTres {
 				
 			}
 			
-		return JugadorGanador;}
+		return JugadorGanador;
+		}
 		
 		//para mirar una vez terminado si hay algun ganador en columnas
 		public static int mirarColumnas(char a[][]) {
@@ -164,9 +173,10 @@ public class ControladorTres {
 				
 			}
 			
-		return JugadorGanador;}
+		return JugadorGanador;
+		}
 		
-		
+		//comprueba si hay ganador  llamando a los metodos de comprobacion de fila, columna y diagonal
 		public static int hayGanador(char a[][]) {
 			int ganador=0;
 			
@@ -186,9 +196,10 @@ public class ControladorTres {
 				}
 				
 			}
-		return ganador;}
+		return ganador;
+		}
 		
-		//movimiento de la CPU
+		//Movimiento de la maquina en partidas de cpu
 		public static String cpu(char a[][]) {
 			String posicion="";
 			boolean movimientoRealizado=false;
